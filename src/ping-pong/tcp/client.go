@@ -36,7 +36,7 @@ func (cli *TcpClient) Connect(hst string, prt int) error {
 	CONNECTION: for {
 
 		time.Sleep(time.Second * 1)
-		log.Printf("Tcp Client was sent message %s\n", req)
+		log.Printf("Tcp Client was sent %s\n", req)
 		
 		wtr.Write([]byte(req))
 		wtr.Flush()
@@ -54,13 +54,13 @@ func (cli *TcpClient) Connect(hst string, prt int) error {
 			case nil: {
 
 				res := string(buf[:len])
-				log.Printf("Tcp Client was received message %s\n", res)
+				log.Printf("Tcp Client was received %s\n", res)
 
 			}
 				
 			default: {
 
-				log.Fatalf("Tcp Client was failed to receive message %s\n", err)
+				log.Fatalf("Tcp Client was failed to receive %s\n", err)
 				return err
 
 			}
